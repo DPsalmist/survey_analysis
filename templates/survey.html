@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Income Spending Survey</title>
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEJb3V1m8tC7yEVrx0bmER3sI4gkbcw1UoiWfD0V6XyST/aWEqaIY4WnUczdF" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Income Spending Survey</h1><hr>
+        
+        <!-- Display flash messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="alert alert-{{ messages[0][0] }}">
+                   <b> {{ messages[0][1] }}</b>
+                </div>
+            {% endif %}
+        {% endwith %}
+        <br>
+        <form method="POST" class="needs-validation" novalidate>
+            <div class="mb-3">
+                <label for="age" class="form-label">Age</label>
+                <input type="number" name="age" class="form-control" id="age" required>
+                <div class="invalid-feedback">Please enter your age.</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="gender" class="form-label">Gender</label>
+                <select name="gender" class="form-select" id="gender" required>
+                    <option value="" disabled selected>Select your gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+                <div class="invalid-feedback">Please select your gender.</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="income" class="form-label">Total Income</label>
+                <input type="number" name="income" class="form-control" id="income" step="0.01" required>
+                <div class="invalid-feedback">Please enter your total income.</div>
+            </div>
+
+            <h4 class="mb-3">Expenses</h4>
+
+            <div class="mb-3">
+                <label for="utilities" class="form-label">Utilities</label>
+                <input type="number" name="utilities" class="form-control" id="utilities" step="0.01">
+            </div>
+
+            <div class="mb-3">
+                <label for="entertainment" class="form-label">Entertainment</label>
+                <input type="number" name="entertainment" class="form-control" id="entertainment" step="0.01">
+            </div>
+
+            <div class="mb-3">
+                <label for="school_fees" class="form-label">School Fees</label>
+                <input type="number" name="school_fees" class="form-control" id="school_fees" step="0.01">
+            </div>
+
+            <div class="mb-3">
+                <label for="shopping" class="form-label">Shopping</label>
+                <input type="number" name="shopping" class="form-control" id="shopping" step="0.01">
+            </div>
+
+            <div class="mb-3">
+                <label for="healthcare" class="form-label">Healthcare</label>
+                <input type="number" name="healthcare" class="form-control" id="healthcare" step="0.01">
+            </div>
+
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS and Popper.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybI+LX8twmuJfYyy4j2CLpz5eC5Gn8XTKtG0G4f9f1pT/8kz2f" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-FTp6pYtK9+V4giIbq6c3EfrG2xfIk5fTzD2P+trFUtW1lNSDQe+fx6ZgZaVj4IEw" crossorigin="anonymous"></script>
+
+    <!-- Custom JS for form validation -->
+    <script>
+        // Bootstrap form validation
+        (function () {
+            'use strict'
+            var forms = document.querySelectorAll('.needs-validation')
+            Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+        })()
+    </script>
+</body>
+</html>
