@@ -10,6 +10,8 @@ app = Flask(__name__)
 SECRET_FLASH_KEY = os.getenv('SECRET_FLASH_KEY')
 app.secret_key = SECRET_FLASH_KEY
 
+
+
 # MongoDB connection
 #localclient = MongoClient("mongodb://localhost:27017/")"
 mongo_uri = os.getenv("MONGO_URI")
