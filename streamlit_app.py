@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -5,10 +6,20 @@ import seaborn as sns
 from pymongo import MongoClient
 
 
-# Load secrets
-MONGO_URI = st.secrets["mongo"]["MONGO_URI"]
-DB_NAME = st.secrets["mongo"]["DB_NAME"]
-COLLECTION_NAME = st.secrets["mongo"]["COLLECTION_NAME"]
+
+# Load secrets from Streamlit Cloud if available
+if "mongo" in st.secrets:
+    MONGO_URI = st.secrets["mongo"]["MONGO_URI"]
+    DB_NAME = st.secrets["mongo"]["DB_NAME"]
+    COLLECTION_NAME = st.secrets["mongo"]["COLLECTION_NAME"]
+else:
+    # Fallback: Read from environment variables (or a local file)
+    MONGO_URI = os.getenv("MONGO_URI", "mongodb+srv://sdamilare420:I8RplHudQufQfxVP@surveydbcluster0.vej20.mongodb.net/?retryWrites=true&w=majority&appName=surveydbCluster0")
+    DB_NAME = os.getenv("DB_NAME", "survey_db")
+    COLLECTION_NAME = os.getenv("COLLECTION_NAME", "participants")
+
+st.write(f"Using database: {DB_NAME}")
+
 
 
 @st.cache_data
