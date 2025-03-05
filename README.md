@@ -2,11 +2,16 @@
 
 This is a web application built with Flask to collect user survey data and visualize the results. It uses MongoDB to store data, processes it using Python, and generates visualizations for further analysis.
 
+🚀 Live Demo
+Check out the app here: Survey Analysis App http://13.48.70.249:5000/
+
 # Features
-Survey Form: Collects user details, including Age, Gender, Total Income, and Expenses in different categories (Utilities, Entertainment, School Fees, Shopping, Healthcare).
-Data Processing: Converts collected data into CSV format for further analysis.
-Data Visualization: Displays charts and graphs that provide insights into user data, such as income vs age and gender distribution across spending categories.
-Technologies Used
+- Survey Form: Collects user details, including Age, Gender, Total Income, and Expenses in different categories (Utilities, Entertainment, School Fees, Shopping, Healthcare).
+- Data Processing: Converts collected data into CSV format for further analysis.
+- Data Visualization: Displays charts and graphs that provide insights into user data, such as income vs age and gender distribution across spending categories.
+
+
+# Technologies Used
 Flask: Python web framework for building the survey form and handling requests.
 MongoDB: NoSQL database for storing survey data.
 Matplotlib & Seaborn: Python libraries for data visualization.
@@ -55,6 +60,8 @@ After processing the data, use the data_visualization.ipynb Jupyter notebook to 
 
 To run the notebook:
 jupyter notebook Income_visualization.ipynb
+
+You can check the app at http://13.48.70.249:5000/
 
 8. Deployment on AWS EC2
 Set Up EC2 Instance: Launch an EC2 instance using the Amazon Linux 2 AMI or Ubuntu.
