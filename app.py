@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 from flask import Flask, render_template, request, redirect, url_for, flash
 from pymongo import MongoClient
 
+
 # Load environment variables from .env file
 load_dotenv()
 
@@ -11,10 +12,11 @@ SECRET_FLASH_KEY = os.getenv('SECRET_FLASH_KEY')
 app.secret_key = SECRET_FLASH_KEY
 
 
-
+print("All environment variables:", os.environ)
 # MongoDB connection
 #localclient = MongoClient("mongodb://localhost:27017/")"
 mongo_uri = os.getenv("MONGO_URI")
+print(f'mongo uri => {mongo_uri}')
 
 # Create a new client and connect to the server
 client = MongoClient(mongo_uri)
@@ -61,7 +63,7 @@ def survey():
         return redirect("/")  # After submission, reload the page
     
     # Render the survey form
-    return render_template("survey.html")
+    return render_template("survey1.html")
 
 
 @app.route('/submit', methods=['POST'])

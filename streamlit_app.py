@@ -27,7 +27,7 @@ def load_data():
     client = MongoClient(MONGO_URI)
     db = client[DB_NAME]
     collection = db[COLLECTION_NAME]
-    data = list(collection.find({}, {"_id": 0}))
+    data = list(collection.find({}, {"_id": 0}).sort("_id", -1))
     
     # Normalize 'expenses' field
     for record in data:
@@ -49,11 +49,11 @@ else:
         st.write(df)
     
     # Highest income visualization
-    st.subheader("Top 10 Ages with Highest Income")
+    st.subheader("Top 20 Ages with Highest Income")
     highest_income_df = df.sort_values(by="income", ascending=False)
     
     fig, ax = plt.subplots(figsize=(10, 6))
-    sns.barplot(x='age', y='income', data=highest_income_df.head(10), ax=ax)
+    sns.barplot(x='age', y='income', data=highest_income_df.head(20), ax=ax)
     ax.set_title("Top 10 Ages with the Highest Income")
     ax.set_xlabel("Age")
     ax.set_ylabel("Income")
