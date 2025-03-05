@@ -15,7 +15,7 @@ app.secret_key = SECRET_FLASH_KEY
 # print("All environment variables:", os.environ)
 # # MongoDB connection
 # #localclient = MongoClient("mongodb://localhost:27017/")"
-# mongo_uri = os.getenv("MONGO_URI")
+mongo_uri = os.getenv("MONGO_URI")
 # print(f'mongo uri => {mongo_uri}')
 
 # Create a new client and connect to the server
